@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import toggleMixin from "@/toggleMixin";
 export default {
   props: {
     onAdd: {
@@ -29,17 +30,18 @@ export default {
       requered: true
     }
   },
+  mixins: [toggleMixin],
   data() {
     return {
       title: "",
-      description: "",
-      visible: true
+      description: ""
+      // visible: true
     };
   },
   methods: {
-    toggle() {
-      this.visible = !this.visible;
-    },
+    // toggle() {
+    //   this.visible = !this.visible;
+    // },
     submit() {
       const recipe = {
         title: this.title.trim(),

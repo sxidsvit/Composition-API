@@ -1,6 +1,11 @@
-# vue-compos-prep
 
-## Project setup
+
+## Composition API 
+
+
+**Цель:** Тестирование Composition API с Vue.js v.2
+
+### Project setup
 ```
 npm install
 ```
@@ -15,5 +20,4 @@ npm run serve
 npm run build
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+See [API Refrense](https://vue-composition-api-rfc.netlify.com/api.html).

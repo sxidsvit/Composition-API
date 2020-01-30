@@ -1,15 +1,10 @@
 export default {
-  // data: () => ({
-  //   visible: false
-  // }),
-  data() {
-    return {
-      visible: false
-    };
-  },
+  data: () => ({
+    visible: false
+  }),
   methods: {
     toggle() {
-      this.visible = !this.visible;
+      this.visible = !this.visible
     }
   }
 }

@@ -1,115 +1,103 @@
 <template>
   <div class="container">
     <AddRecipe :onAdd="addRecipe" />
+
     <div class="columns">
       <RecipeList @select="selectRecipe" :recipes="recipes" />
-      <RecipeDetail @remove="removeRecipe" :recipe="current" />
+      <RecipeDetail :recipe="current" @remove="removeRecipe" />
     </div>
   </div>
 </template>
 
 <script>
-import AddRecipe from "@/components/AddRecipe";
-import RecipeDetail from "@/components/RecipeDetail";
-import RecipeList from "@/components/RecipeList";
+import AddRecipe from '@/components/AddRecipe'
+import RecipeDetail from '@/components/RecipeDetail'
+import RecipeList from '@/components/RecipeList'
+import {useRecipes} from './composition/recipes'
 
 export default {
-  name: "app",
+  name: 'app',
   components: {
     AddRecipe,
     RecipeList,
     RecipeDetail
   },
-  data() {
+  setup() {
     return {
-      recipes: [],
-      current: null
-    };
-  },
-  methods: {
-    addRecipe(recipe) {
-      this.recipes.push(recipe);
-    },
-    removeRecipe(id) {
-      this.recipes = this.recipes.filter(r => r.id !== id);
-      this.current = null;
-    },
-    selectRecipe(id) {
-      this.current = this.recipes.find(r => r.id === id);
-      console.log("this.current: ", this.current);
+      ...useRecipes()
     }
   }
-};
+}
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+  @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-}
+  * {
+    margin: 0;
+    padding: 0;
+  }
 
-body {
-  font-family: "Roboto", sans-serif;
-  color: #222;
-}
+  body {
+    font-family: 'Roboto', sans-serif;
+    color: #222;
+  }
 
-a {
-  text-decoration: none;
-  color: darkblue;
-  transition: 0.3s all ease;
-}
+  a {
+    text-decoration: none;
+    color: darkblue;
+    transition: .3s all ease;
+  }
 
-.center {
-  text-align: center;
-}
+  .center {
+    text-align: center;
+  }
 
-a:hover {
-  cursor: pointer;
-  opacity: 0.7;
-  text-decoration: underline;
-}
+  a:hover {
+    cursor: pointer;
+    opacity: .7;
+    text-decoration: underline;
+  }
 
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  height: 100vh;
-}
 
-.columns {
-  display: flex;
-}
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    height: 100vh;
+  }
 
-.detail,
-.list {
-  width: 50%;
-  border: 1px solid #eee;
-}
+  .columns {
+    display: flex;
+  }
 
-.list {
-  border-right: 0;
-}
+  .detail, .list {
+    width: 50%;
+    border: 1px solid #eee;
+  }
 
-.btn {
-  border-radius: 5px;
-  background: darkblue;
-  color: #fff;
-  padding: 6px 14px;
-  cursor: pointer;
-}
+  .list {
+    border-right: 0;
+  }
 
-.btn:disabled {
-  background-color: #eee;
-  color: black;
-  cursor: not-allowed;
-}
+  .btn {
+    border-radius: 5px;
+    background: darkblue;
+    color: #fff;
+    padding: 6px 14px;
+    cursor: pointer;
+  }
 
-.btn.remove {
-  background: darkred;
-}
+  .btn:disabled {
+    background-color: #eee;
+    color: black;
+    cursor: not-allowed;
+  }
 
-.btn.secondary {
-  background: grey;
-}
+  .btn.remove {
+    background: darkred;
+  }
+
+  .btn.secondary{
+    background: grey;
+  }
 </style>

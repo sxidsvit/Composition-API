@@ -35,8 +35,8 @@ export default {
 }
 
 .empty {
-  padding: 2rem;
-  background: rgb(208, 238, 199) !important;
+  padding: 1rem;
+  background: #fff !important;
 }
 
 .card-title {
